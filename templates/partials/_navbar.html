@@ -1,0 +1,63 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="{% url 'index' %}" class="navbar-brand text-info">Vinciu</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="women.html">Women</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="men.html">Men</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kids.html">Kids</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                </li>
+            </ul>
+
+            <div class="m-auto">
+                <form action="#" class="form-inline mb-resp">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button class="btn btn-outline-secondary" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <ul class="navbar-nav">
+                <li class="nav-item mr-auto">
+                    <button class="nav-link btn btn-outline-info btn-sm mb-resp text-muted mr-2" data-toggle="modal"
+                        data-target="#loginModal">Sign Up | Log in</button>
+                </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link btn btn-info btn-sm text-white" href="sell.html">Sell Now</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Join Vinciu</h5>
+                <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body m-auto">
+                <a href="signup.html" class="btn btn-light">Sign Up</a>
+                <span><i class="fas fa-angle-double-left"></i></span>
+                <span><i class="fas fa-angle-double-right"></i></span>
+                <a href="login.html" class="btn btn-light">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
