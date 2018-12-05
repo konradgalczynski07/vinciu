@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} | Create an account {% endblock %}
+
+{% block content %}
+<!-- SIGNUP SECTION -->
+{% if user.is_authenticated %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="alert alert-danger">
+                    <strong>Error</strong> Logged in users can't create an account.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <!-- Alerts -->
+                        {% include 'partials/_alerts.html' %}
+                        <h4 class="card-title">Sign up</h4>
+                        <form action="{% url 'signup' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" placeholder="Password"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password2" class="form-control" placeholder="Confirm Password"
+                                    required>
+                            </div>
+                            <input type="submit" value="Sign up" class="btn btn-info btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

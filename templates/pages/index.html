@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} | Sell your clothes {% endblock %}
+
 {% block content %}
 <!-- SHOWCASE -->
 <section id="showcase">
@@ -7,8 +9,8 @@
     <div class="container">
       <div class="row">
         <div class="col mt-5">
-          <h1 class="display-3 mt-5">Sell your clothes</h1>
-          <h1 class="display-3">and make money!</h1>
+          <h1 class="display-4 mt-5">Sell your clothes</h1>
+          <h1 class="display-4">and make money!</h1>
           <p class="lead mt-3">Just snap, upload and sell - for free.</p>
           <a class="btn btn-info btn-lg text-white" href="sell.html">Sell Now</a>
         </div>
@@ -17,11 +19,17 @@
   </div>
 </section>
 
+{% if messages %}
+<br>
+<!-- Alerts -->
+{% include 'partials/_alerts.html' %}
+{% endif %}
+
 <!-- LISTINGS -->
 <section id="listings">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
+      <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
         <div class="card">
           <div class="card-header">
             <img src="https://source.unsplash.com/random/300x200/?people" alt="" width="32" height="32" class="img rounded-circle ">

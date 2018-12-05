@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %} | User profile {% endblock %}
+
+{% block content %}
+<!-- PROFILE SECTION -->
+<section id="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <img class="card-img-top" src="https://source.unsplash.com/random/300x400?face" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ user_queryset.get_username }}</h3>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, dolor
+                            repellendus. Neque ad ullam unde modi voluptatum dolore, repellendus incidunt, ducimus
+                            doloremque
+                            libero laborum maxime ut! Fugit facere deserunt doloribus quia maiores, magni atque. Rem id
+                            magni quasi
+                            hic nostrum molestias eaque, eos est nesciunt minima cum. Culpa, dolorum asperiores?</p>
+                        <hr>
+                        <small class="text-muted">Dodane informacje:</small>
+                        <p><i class="fas fa-check"></i> E-mail</p>
+                        <p><i class="fas fa-check"></i> Phone Number</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Jarocin</p>
+                        <hr>
+                        <a href="{% url 'opinions' user_queryset.get_username %}" class="btn btn-light btn-block btn-sm text-center">
+                            <p><i class="fas fa-star"></i>4.5 (21 comments) <i class="fas fa-angle-right"></i></p>
+                            <p>Add opinion</p>
+                        </a>
+                        <hr>
+                        <a href="message.html" class="btn btn-info btn-block">Send Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mt-3 px-1">
+                        <div class="card">
+                            <a href="item.html">
+                                <img class="card-img-top" src="https://source.unsplash.com/random/200x300/?clothe" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="card-title">$8.00</h6>
+                                <small class="text-muted">M |</small>
+                                <small class="text-muted">H&M</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-3 px-1">
+                        <div class="card">
+                            <img class="card-img-top" src="https://source.unsplash.com/random/301x200/?clothe" alt="">
+                            <div class="card-body">
+                                <h6 class="card-title">$8.00</h6>
+                                <small class="text-muted">M |</small>
+                                <small class="text-muted">H&M</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-3 px-1">
+                        <div class="card">
+                            <img class="card-img-top" src="https://source.unsplash.com/random/302x200/?clothe" alt="">
+                            <div class="card-body">
+                                <h6 class="card-title">$8.00</h6>
+                                <small class="text-muted">M |</small>
+                                <small class="text-muted">H&M</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-3 px-1">
+                        <div class="card">
+                            <img class="card-img-top" src="https://source.unsplash.com/random/303x200/?clothe" alt="">
+                            <div class="card-body">
+                                <h6 class="card-title">$8.00</h6>
+                                <small class="text-muted">M |</small>
+                                <small class="text-muted">H&M</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %}
