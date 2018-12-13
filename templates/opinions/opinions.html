@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Opinions {% endblock %}
+
+{% block content %}
+
+{% if messages %}
+<!-- Alerts -->
+<br>
+{% include 'partials/_alerts.html' %}
+{% endif %}
+
+<!-- OPINIONS -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+                {% if user.get_username == user_queryset.get_username %}
+                {% else %}
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Did you make deal with that user?</p>
+                            <p class="text-muted">Let us know what you think</p>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end align-items-center">
+                            <a href="{% url 'new_opinion' user_queryset.get_username %}" class="btn btn-info">Leave
+                                Your Opinion</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if opinions %}
+                {% for opinion in opinions %}
+                <div class="card-body">
+                    <div class="d-flex flex-column row-hl">
+                        <div class="p-2 item-hl border-bottom">
+                            <img src="https://source.unsplash.com/random/32x32/?people" alt="" width="48" height="48"
+                                class="img-fluid rounded-circle">
+                            <strong>{{ opinion.from_user }}</strong>
+                            <p class="float-right text-muted">{{ opinion.list_date | timesince }} ago</p>
+                            <p class=" mx-2 px-5">
+                                <i class="fas fa-star"></i> {{ opinion.rating }} -
+                                {{ opinion.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <!-- PAGINATION -->
+                {% if opinions.has_other_pages %}
+                <nav class="m-4">
+                    <ul class="pagination justify-content-center">
+                        {% if opinions.has_previous %}
+                        <li class="page-item">
+                            <a href="?page={{ opinions.previous_page_number }}" class="page-link">&laquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&laquo;</a>
+                        </li>
+                        {% endif %}
+                        {% for i in opinions.paginator.page_range %}
+                        {% if opinions.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if opinions.has_next %}
+                        <li class="page-item">
+                            <a href="?page={{ opinions.next_page_number }}" class="page-link">&raquo;</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">&raquo;</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+
+                {% else %}
+                <div class="card-body text-center">
+                    <h3>No opinions yet</h3>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

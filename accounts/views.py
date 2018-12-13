@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -23,15 +22,12 @@ def login(request):
 
 def signup(request):
     if request.method == 'POST':
-        # Get form values
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
 
-        # Check if passwords match
         if password == password2:
-            # Check username
             if User.objects.filter(username=username).exists():
                 messages.error(request, 'That username is taken')
                 return redirect('signup')
@@ -40,7 +36,6 @@ def signup(request):
                     messages.error(request, 'That email is being used')
                     return redirect('signup')
                 else:
-                    # Looks good
                     user = User.objects.create_user(
                         username=username, password=password, email=email)
                     # Login after signup
@@ -58,7 +53,7 @@ def signup(request):
         return render(request, 'accounts/signup.html')
 
 
-@login_required(login_url="/login")
+
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
@@ -70,26 +65,7 @@ def logout(request):
 
 def profile(request, username):
     user_queryset = get_object_or_404(User, username=username)
-
     context = {
         'user_queryset': user_queryset
     }
     return render(request, 'accounts/profile.html', context)
-
-
-def opinions(request, username):
-    user_queryset = get_object_or_404(User, username=username)
-
-    context = {
-        'user_queryset': user_queryset
-    }
-    return render(request, 'accounts/opinions.html', context)
-
-
-def new_opinion(request, username):
-    user_queryset = get_object_or_404(User, username=username)
-
-    context = {
-        'user_queryset': user_queryset
-    }
-    return render(request, 'accounts/new_opinion.html', context)

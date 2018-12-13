@@ -23,6 +23,7 @@
                         <p><i class="fas fa-check"></i> E-mail</p>
                         <p><i class="fas fa-check"></i> Phone Number</p>
                         <p><i class="fas fa-map-marker-alt"></i> Jarocin</p>
+                        <p>Last login: {{ user_queryset.last_login }}</p>
                         <hr>
                         <a href="{% url 'opinions' user_queryset.get_username %}" class="btn btn-light btn-block btn-sm text-center">
                             <p><i class="fas fa-star"></i>4.5 (21 comments) <i class="fas fa-angle-right"></i></p>

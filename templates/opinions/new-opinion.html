@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %} | Leave Your Opinion {% endblock %}
+
+{% block content %}
+<!-- LEAVE OPINION -->
+{% if user.get_username == user_queryset.get_username %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="alert alert-danger">
+                    <strong>Error</strong> You can't leave an opinion to yourself.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+                <div class="card-header">
+                    Leave Your Opinion
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'new_opinion' user_queryset.get_username %}" method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="form-group">
+                            <label for="name">User:</label>
+                            <input type="text" class="form-control" value="{{ user_queryset.get_username }}"
+                                disabled>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating:</label>
+                            <select name="rating" class="form-control">
+                                <option selected="true" disabled="disabled">Stars</option>
+                                {% for key,value in rating_choices %}
+                                <option value="{{ key }}">{{ value }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea name="message" class="form-control" id="opinion" rows="3"></textarea>
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-info">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
