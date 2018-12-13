@@ -20,20 +20,27 @@
                 </li>
             </ul>
 
-            <div class="m-auto">
-                <form action="#" class="form-inline mb-resp">
+            <form method="GET" action="#" class="mb-resp m-auto">
+                <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
-                    <button class="btn btn-outline-secondary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
             {% if user.is_authenticated %}
             <ul class="navbar-nav ml-auto align-items-center">
                 <li class="nav-item mr-2">
                     <a href="messages.html" class="nav-link btn btn-lg">
                         <i class="fas fa-envelope"></i>
+                    </a>
+                </li>
+                <li class="nav-item mr-2">
+                    <a href="messages.html" class="nav-link btn btn-lg">
+                        <i class="fas fa-heart"></i>
                     </a>
                 </li>
                 <li class="nav-item dropdown mr-2">
