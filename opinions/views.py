@@ -21,7 +21,7 @@ def opinions(request, username):
     return render(request, 'opinions/opinions.html', context)
 
 
-@login_required(login_url="/login")
+@login_required()
 def new_opinion(request, username):
     user_queryset = User.objects.get(username=username)
 

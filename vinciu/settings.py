@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # my apps 
     'pages',
     'accounts',
+    'profiles',
     'opinions',
 ]
 
@@ -146,3 +147,5 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+LOGIN_URL = '/login/'

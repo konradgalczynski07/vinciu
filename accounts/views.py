@@ -61,11 +61,3 @@ def logout(request):
         return redirect('index')
     else:
         return redirect('index')
-
-
-def profile(request, username):
-    user_queryset = get_object_or_404(User, username=username)
-    context = {
-        'user_queryset': user_queryset
-    }
-    return render(request, 'accounts/profile.html', context)

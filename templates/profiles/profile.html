@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block title %} | User profile {% endblock %}
 
 {% block content %}
@@ -9,24 +11,21 @@
         <div class="row">
             <div class="col-md-4 mt-3">
                 <div class="card">
-                    <img class="card-img-top" src="https://source.unsplash.com/random/300x400?face" alt="">
+                    <img class="card-img-top" src="{{ user_queryset.profile.avatar.url }}" alt="">
                     <div class="card-body">
                         <h3 class="card-title">{{ user_queryset.get_username }}</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, dolor
-                            repellendus. Neque ad ullam unde modi voluptatum dolore, repellendus incidunt, ducimus
-                            doloremque
-                            libero laborum maxime ut! Fugit facere deserunt doloribus quia maiores, magni atque. Rem id
-                            magni quasi
-                            hic nostrum molestias eaque, eos est nesciunt minima cum. Culpa, dolorum asperiores?</p>
+                        <p class="card-text">{{ user_queryset.profile.bio }}</p>
                         <hr>
                         <small class="text-muted">Dodane informacje:</small>
                         <p><i class="fas fa-check"></i> E-mail</p>
-                        <p><i class="fas fa-check"></i> Phone Number</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Jarocin</p>
-                        <p>Last login: {{ user_queryset.last_login }}</p>
+                        {% if user_queryset.profile.phone_number %}
+                            <p><i class="fas fa-check"></i> Phone Number</p>
+                        {% endif %}
+                        <p><i class="fas fa-map-marker-alt"></i> {{ user_queryset.profile.location }} </p>
+                        <p><i class="fas fa-clock"></i> Last login: {{ user_queryset.last_login|timesince }} ago</p>
                         <hr>
                         <a href="{% url 'opinions' user_queryset.get_username %}" class="btn btn-light btn-block btn-sm text-center">
-                            <p><i class="fas fa-star"></i>4.5 (21 comments) <i class="fas fa-angle-right"></i></p>
+                            <p><i class="fas fa-star"></i>{{ avg_rating.rating__avg|floatformat }} ({{ total_comments }} comments) <i class="fas fa-angle-right"></i></p>
                             <p>Add opinion</p>
                         </a>
                         <hr>
