@@ -52,7 +52,7 @@
                         <a href="{% url 'profile' user.get_username %}" class="dropdown-item">
                             <i class="fas fa-user-circle"></i> Profile
                         </a>
-                        <a href="settings.html" class="dropdown-item">
+                        <a href="{% url 'settings' %}" class="dropdown-item">
                             <i class="fas fa-cog"></i> Settings
                         </a>
                         <a href="javascript:{document.getElementById('logout').submit()}" class="dropdown-item">

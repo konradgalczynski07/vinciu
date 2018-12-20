@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} | User Settings {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% include 'partials/_alerts.html' %}
+            <div class="card mt-3">
+                <div class="card-header">User Settings</div>
+                <form action="{% url 'settings' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-body align-items-center d-flex justify-content-around">
+                        <h4 class="card-title">Your photo</h4>
+                        <img src="{{ user.profile.avatar.url }}" width="100" height="100" class="img rounded-circle ">
+                        <div class="form-group">
+                                {{ avatar_form.as_p }}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-body mx-lg-5">
+                        <h4 class="card-title mb-5">Personal Information</h4>
+                        <div class="form-group">
+                            {{ user_form.as_p }}
+                            {{ profile_form.as_p }}
+                        </div>
+                        <input type="submit" value="Update profile" class="float-right my-4 mr-5 btn btn-info btn-lg">
+                    </div>
+                </form>
+                <hr>
+                <div class="card-body mx-lg-5">
+                    <h4 class="card-title d-inline">Email address</h4>
+                    <a href="{% url 'change_email' %}" class="btn btn-info float-right">Change</a>
+                </div>
+                <hr>
+                <div class="card-body mx-lg-5">
+                    <h4 class="card-title d-inline">Password</h4>
+                    <a href="{% url 'change_password' %}" class="btn btn-info float-right">Change</a>
+                </div>
+                <hr>
+                <div class="card-body mx-lg-5 mb-3">
+                    <h4 class="card-title d-inline">Delete account</h4>
+                    <a href="{% url 'delete_acc' %}" class="btn btn-info float-right">></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

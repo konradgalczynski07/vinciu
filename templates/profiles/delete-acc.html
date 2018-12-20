@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} | Delete account {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% include 'partials/_alerts.html' %}
+            <div class="card mt-3">
+                <div class="card-header">Delete account</div>
+                <form action="{% url 'delete_acc' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="card-body mx-lg-5">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Confirm with your password" required>
+                        </div>
+                        <small class="text-muted">This will delete your account permamently and this can not be undone.</small>
+                        <input type="submit" value="Delete account" class="float-right my-5 mr-5 btn btn-danger btn-lg">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

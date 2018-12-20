@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} | Change Email {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% include 'partials/_alerts.html' %}
+            <div class="card mt-3">
+                <div class="card-header">Change Email</div>
+                <form action="{% url 'change_email' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="card-body mx-lg-5">
+                        <div class="form-group">
+                            <label for="new_email">New Email Address</label>
+                            <input type="email" class="form-control" name="new_email" placeholder="Enter new email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Confirm with your password" required>
+                        </div>
+                        <input type="submit" value="Change email" class="float-right my-4 mr-5 btn btn-info btn-lg">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

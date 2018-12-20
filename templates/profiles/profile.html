@@ -21,7 +21,9 @@
                         {% if user_queryset.profile.phone_number %}
                             <p><i class="fas fa-check"></i> Phone Number</p>
                         {% endif %}
+                        {% if user_queryset.profile.location %}
                         <p><i class="fas fa-map-marker-alt"></i> {{ user_queryset.profile.location }} </p>
+                        {% endif %}
                         <p><i class="fas fa-clock"></i> Last login: {{ user_queryset.last_login|timesince }} ago</p>
                         <hr>
                         <a href="{% url 'opinions' user_queryset.get_username %}" class="btn btn-light btn-block btn-sm text-center">
