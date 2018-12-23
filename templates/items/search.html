@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} | Search Results {% endblock %}
+
+{% block content %}
+<!-- ITEMS -->
+<section id="items">
+    <div class="container">
+        <!-- Alerts -->
+        {% include 'partials/_alerts.html' %}
+        <div class="row">
+            {% if posted_items %}
+            {% for item in posted_items %}
+            <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
+                <div class="card">
+                    <a href="{% url 'profile' item.user.username %}" class="text-dark no-dec">
+                        <div class="card-header">
+                            <img src="{{ item.user.profile.avatar.url }}" width="32" height="32"
+                                class="img rounded-circle ">
+                            <h5 class="d-inline align-middle ml-1">{{ item.user.username }}</h5>
+                        </div>
+                    </a>
+                    <a href="{% url 'item' item.id %}">
+                        <img class="card-img" src="{{ item.photo_main.url }}">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-title">${{ item.price }} 
+                            <i class="far fa-heart float-right"></i>
+                        </p>
+                        <small class="text-muted">{{ item.size }} |</small>
+                        <small class="text-muted">{{ item.brand }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col mt-5">
+                <p>No items available</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

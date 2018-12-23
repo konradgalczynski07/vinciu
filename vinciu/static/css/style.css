@@ -18,6 +18,10 @@
     margin: auto
 }
 
+a.no-dec {
+    text-decoration: none;
+}
+
 
 
 @media (max-width: 991px) {

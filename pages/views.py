@@ -1,8 +1,15 @@
 from django.shortcuts import render
+from items.models import Item
 
 
 def index(request):
-    return render(request, 'pages/index.html')
+    posted_items = Item.objects.order_by('-list_date')
+
+    context = {
+        'posted_items': posted_items
+    }
+
+    return render(request, 'pages/index.html', context)
 
 
 def about(request):

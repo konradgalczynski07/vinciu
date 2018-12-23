@@ -20,174 +20,37 @@
 </section>
 
 
-<!-- LISTINGS -->
-<section id="listings">
+<!-- ITEMS -->
+<section id="items">
     <div class="container">
         <!-- Alerts -->
         {% include 'partials/_alerts.html' %}
         <div class="row">
+            {% if posted_items %}
+            {% for item in posted_items %}
             <div class="col-lg-3 col-md-4 col-sm-6 mt-3">
                 <div class="card">
-                    <div class="card-header">
-                        <img src="https://source.unsplash.com/random/300x200/?people" alt="" width="32" height="32"
-                            class="img rounded-circle ">
-                        <h5 class="d-inline align-middle ml-1">Anna Krawczyk</h5>
-                    </div>
-                    <a href="item.html">
-                        <img class="card-img" src="https://source.unsplash.com/random/200x300/?clothe" alt="">
+                    <a href="{% url 'profile' item.user.username %}" class="text-dark no-dec">
+                        <div class="card-header">
+                            <img src="{{ item.user.profile.avatar.url }}" width="32" height="32"
+                                class="img rounded-circle ">
+                            <h5 class="d-inline align-middle ml-1">{{ item.user.username }}</h5>
+                        </div>
+                    </a>
+                    <a href="{% url 'item' item.id %}">
+                        <img class="card-img" src="{{ item.photo_main.url }}">
                     </a>
                     <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
+                        <p class="card-title">${{ item.price }} 
+                            <i class="far fa-heart float-right"></i>
+                        </p>
+                        <small class="text-muted">{{ item.size }} |</small>
+                        <small class="text-muted">{{ item.brand }}</small>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/301x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/302x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/303x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/300x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/301x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/302x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/303x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/300x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/301x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/302x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Anna Krawczyk</h5>
-                    </div>
-                    <img class="card-img" src="https://source.unsplash.com/random/303x200/?clothe" alt="">
-                    <div class="card-body">
-                        <h6 class="card-title">$8.00</h6>
-                        <small class="text-muted">M |</small>
-                        <small class="text-muted">H&M</small>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

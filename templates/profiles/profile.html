@@ -36,49 +36,28 @@
                 </div>
             </div>
             <div class="col-md-8">
+                {% include 'partials/_alerts.html' %}
                 <div class="row">
+                    {% if posted_items %}
+                    {% for item in posted_items %}
                     <div class="col-lg-4 col-md-6 mt-3 px-1">
                         <div class="card">
                             <a href="item.html">
-                                <img class="card-img-top" src="https://source.unsplash.com/random/200x300/?clothe" alt="">
+                                <img class="card-img-top" src="{{ item.photo_main.url }}" alt="">
                             </a>
                             <div class="card-body">
-                                <h6 class="card-title">$8.00</h6>
-                                <small class="text-muted">M |</small>
-                                <small class="text-muted">H&M</small>
+                                <h6 class="card-title">${{ item.price }}</h6>
+                                <small class="text-muted">{{ item.size }} |</small>
+                                <small class="text-muted">{{ item.brand }}</small>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-3 px-1">
-                        <div class="card">
-                            <img class="card-img-top" src="https://source.unsplash.com/random/301x200/?clothe" alt="">
-                            <div class="card-body">
-                                <h6 class="card-title">$8.00</h6>
-                                <small class="text-muted">M |</small>
-                                <small class="text-muted">H&M</small>
-                            </div>
-                        </div>
+                    {% endfor %}
+                    {% else %}
+                     <div class="col mt-5">
+                         <h3>No items yet</h3>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-3 px-1">
-                        <div class="card">
-                            <img class="card-img-top" src="https://source.unsplash.com/random/302x200/?clothe" alt="">
-                            <div class="card-body">
-                                <h6 class="card-title">$8.00</h6>
-                                <small class="text-muted">M |</small>
-                                <small class="text-muted">H&M</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-3 px-1">
-                        <div class="card">
-                            <img class="card-img-top" src="https://source.unsplash.com/random/303x200/?clothe" alt="">
-                            <div class="card-body">
-                                <h6 class="card-title">$8.00</h6>
-                                <small class="text-muted">M |</small>
-                                <small class="text-muted">H&M</small>
-                            </div>
-                        </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

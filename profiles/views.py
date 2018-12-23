@@ -4,6 +4,7 @@ from django.contrib.auth import update_session_auth_hash, authenticate
 from django.contrib.auth.models import User
 from django.db.models import Avg
 from opinions.models import Opinion
+from items.models import Item
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm, AvatarForm
 
@@ -13,11 +14,13 @@ def profile(request, username):
     total_comments = Opinion.objects.filter(to_user=user_queryset).count()
     avg_rating = Opinion.objects.all().filter(
         to_user=user_queryset).aggregate(Avg('rating'))
+    posted_items = Item.objects.all().filter(user=user_queryset)
 
     context = {
         'user_queryset': user_queryset,
         'total_comments': total_comments,
-        'avg_rating': avg_rating
+        'avg_rating': avg_rating,
+        'posted_items': posted_items
     }
     return render(request, 'profiles/profile.html', context)
 
