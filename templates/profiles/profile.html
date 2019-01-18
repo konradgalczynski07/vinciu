@@ -42,7 +42,7 @@
                     {% for item in posted_items %}
                     <div class="col-lg-4 col-md-6 mt-3 px-1">
                         <div class="card">
-                            <a href="item.html">
+                            <a href="{% url 'item' item.id %}">
                                 <img class="card-img-top" src="{{ item.photo_main.url }}" alt="">
                             </a>
                             <div class="card-body">
