@@ -2,8 +2,6 @@
 
 This is web application that allows its users to sell, buy, and swap secondhand clothing items.
 
-`This project is not finished yet! I will be adding more features later on.`
-
 ## Features:
 
 -   registering and logging to user account
